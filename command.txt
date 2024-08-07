@@ -4,6 +4,16 @@ sudo chmod 666 /var/run/docker.sock
 docker ps
 
 
+sudo apt-get update
+sudo apt-get install -y curl openssh-server ca-certificates perl
+sudo apt-get install -y postfix
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo EXTERNAL_URL="http://34.22.90.146:8088" apt-get install gitlab-ce
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl start
+sudo gitlab-ctl status
+
+
 curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
 sudo apt-get install gitlab-runner
 sudo gitlab-runner status
