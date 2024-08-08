@@ -27,7 +27,7 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-              external_url 'http://34.64.81.49:8880'
+              external_url 'http://gitlab.dataservice.com:8880'
     ports:
       - '8880:8880'
       - '8443:8443'
