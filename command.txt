@@ -1,12 +1,13 @@
 /* Docker 설치
  * Install the Compose plugin > Install using the repository: https://docs.docker.com/compose/install/linux/
  */
+sudo apt-get update
+
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo chmod 666 /var/run/docker.sock
 docker ps
 
-sudo apt-get update
 sudo apt-get install docker-compose-plugin
 docker compose version
 
@@ -15,22 +16,22 @@ Set up the volumes location: 디렉토리 생성
 sudo mkdir -p /srv/gitlab
 export GITLAB_HOME=/srv/gitlab
 sudo vi docker-compose.yml
+방화벽 설정 필요
 ------------------------------------------------------------
-version: '3.6'
 services:
   gitlab:
-    image: gitlab/gitlab-ce:latest
+    image: 'gitlab/gitlab-ce:latest'
     container_name: gitlab
     restart: always
     hostname: 'gitlab'     
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-              external_url 'http://34.64.81.49:8088'
+              external_url 'http://34.64.81.49:8880'
     ports:
-      - '8088:80'
-      - '44388:443'
-      - '2288:22'
+      - '8880:8880'
+      - '8443:8443'
+      - '8822:8822'
     volumes:
       - '$GITLAB_HOME/config:/etc/gitlab'
       - '$GITLAB_HOME/logs:/var/log/gitlab'
