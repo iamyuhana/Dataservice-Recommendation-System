@@ -40,6 +40,9 @@ services:
 ------------------------------------------------------------
 docker compose up -d
 
+# 도커 GitLab root 계정 비밀번호 초기화
+docker exec -it [container_id] /bin/bash
+
 
 sudo apt-get update
 sudo apt-get install -y curl openssh-server ca-certificates perl
